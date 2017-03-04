@@ -1,0 +1,22 @@
+{
+  "name": "nodepi",
+  "version": "0.0.1",
+  "description": "Blinking LED implementation with Node.js for Raspberry Pi using wiringpi.",
+  "main": "led.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "iot",
+    "Raspberry Pi"
+  ],
+  "dependencies": {
+    "wiring-pi": ">=2.1.1"
+  },
+  "author": "Matt Gould (matt@saowapan.com)",
+  "license": "GPL-3.0",
+  "preferGlobal": "true",
+  "bin": {
+    "rpi-nodejs-led": "led.js"
+  }
+}
