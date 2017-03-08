@@ -133,6 +133,7 @@
     "travis-lint": "1.0.0"
   },
   "dependencies": {
+    "serialport": "^4.0.7",
     "wiring-pi": "^2.2.1"
   }
 }
