@@ -8,8 +8,8 @@ Vue.use(VueResource)
 // }
 
 // // var token = '';
-Vue.http.options.root = 'http://localhost:3000/'
+Vue.http.options.root = 'http://192.168.1.19:3000/'
 // // Vue.http.headers.common['x-access-token'] = token;
 
 export const lights = Vue.resource(Vue.http.options.root + 'lights')
-export const post = Vue.resource(Vue.http.options.root + 'wp-json/wp/v2/posts')
+export const colourChange = Vue.resource(Vue.http.options.root + 'colourChange')

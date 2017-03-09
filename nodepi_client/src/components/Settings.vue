@@ -1,18 +1,26 @@
 <template>
   <div class="settings">
+    <div>
+      <md-radio v-model="colour" id="red" name="red" md-value="red" class="md-warn" @change="colour1('r')">Red</md-radio>
+      <md-radio v-model="colour" id="green" name="green" md-value="green" class="md-warn" @change="colour1('g')">Green</md-radio>
+      <md-radio v-model="colour" id="blue" name="blue" md-value="blue" class="md-warn" @change="colour1('b')">Blue</md-radio>
+    </div>
+<!-- 
+    <md-switch md-theme="green" v-model="colour" @change="color" id="colour" name="my-test5" class="md-primary">Green Primary Color</md-switch> -->
     <md-switch v-model="lighton" @change="light" id="lighton" name="lighton" class="md-primary">Switch Light on/off</md-switch>
   </div>
 </template>
 
 <script>
-import { lights } from '@/helpers/resources'
+import { lights, colourChange } from '@/helpers/resources'
 
 export default {
   name: 'settings',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      lighton: true
+      lighton: true,
+      colour: 'r'
     }
   },
   methods: {
@@ -20,9 +28,18 @@ export default {
       return lights
         .save({ light: this.lighton })
         .then((response) => {
-          this.posts = response.body
+          console.log(response.body)
         }, (errorResponse) => {
-          this.posts = null
+          console.log(errorResponse)
+        })
+    },
+    colour1 (b) {
+      return colourChange
+        .save({ colour: b })
+        .then((response) => {
+          console.log(response.body)
+        }, (errorResponse) => {
+          console.log(errorResponse)
         })
     }
   }

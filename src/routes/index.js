@@ -3,9 +3,6 @@ import express from 'express'
 import SerialPort from 'serialport'
 
 const Serialport = SerialPort
-
-// const parser = new Serialport.parsers.Readline
-
 const serialport = new Serialport("/dev/ttyACM0", {
 	baudRate: 9600,
 	parser: SerialPort.parsers.readline('\n')
@@ -20,28 +17,20 @@ serialport.on('open', function(){
 
 const router = express.Router()
 
-const configPin = 7
-var isLedOn = 0
+router.post('/lights', function (req, res) {
+	const light = (req.body.light) ? '0' : '1'
 
-// wpi.setup('wpi')
-// wpi.pinMode(configPin, wpi.OUTPUT)
+	serialport.write(new Buffer(light))
 
-router.get('/ledon', function (req, res) {
-	isLedOn = +!isLedOn
-	//setInterval()
-	res.send('ledon')
+	res.json(true)
 })
 
-router.get('/lighton', function (req, res) {
+router.post('/colourChange', function (req, res) {
+	const colour = req.body.colour
+	console.log(colour);
+	serialport.write(new Buffer(colour))
 
-	serialport.write(new Buffer('1'))
-	res.send('lighton')
-})
-
-router.get('/lightoff', function (req, res) {
-
-	serialport.write(new Buffer('0'))
-	res.send('lightoff')
+	res.json(colour)
 })
 
 export default router
