@@ -2,7 +2,7 @@
 import express from 'express'
 import BodyParser from 'body-parser'
 //routes
-import index from './routes/index'
+//import index from './routes/index'
 
 import rpio from 'rpio'
 
@@ -25,7 +25,9 @@ rpio.pwmSetRange(pin, range);
  */
 var direction = 1;
 var data = 0;
-var pulse = setInterval(function() {
+
+setInterval(function() {
+	console.log('bleep');
         rpio.pwmSetData(pin, data);
         if (data === 0) {
                 direction = 1;
@@ -54,7 +56,7 @@ app.all('*', function(req, res, next) {
 
 app.use('/public', express.static(__dirname + '/public'))
 
-app.use('/', index);
+//app.use('/', index);
 
 app.listen(3000, function () {
 	console.log('app is listening on port 3000')
