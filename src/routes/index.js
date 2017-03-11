@@ -53,7 +53,7 @@ router.get('/right', function (req, res) {
 		res.json(true)
 	}, 2000)
 })
-#
+
 router.post('/lights', function (req, res) {
 	const light = (req.body.light) ? '0' : '1'
 
