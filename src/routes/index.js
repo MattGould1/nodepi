@@ -5,7 +5,8 @@ import rpio from 'rpio'
  * Set the initial state to low.  The state is set prior to the pin becoming
  * active, so is safe for devices which require a stable setup.
  */
-rpio.open(12, rpio.OUTPUT, rpio.LOW);
+rpio.open(12, rpio.OUTPUT, rpio.LOW)
+rpio.open(18, rpio.OUTPUT, rpio.LOW)
 
 /*
  * The sleep functions block, but rarely in these simple programs does one care
@@ -36,13 +37,23 @@ rpio.open(12, rpio.OUTPUT, rpio.LOW);
 const router = express.Router()
 
 router.get('/left', function (req, res) {
-	rpio.write(12, rpio.HIGH);
+	rpio.write(12, rpio.HIGH)
 
 	setTimeout(function () {
-		rpio.write(12, rpio.LOW);
-	}, 2000);
+		rpio.write(12, rpio.LOW)
+		res.json(true)
+	}, 2000)
 })
 
+router.get('/right', function (req, res) {
+	rpio.write(18, rpio.HIGH)
+
+	setTimeout(function () {
+		rpio.write(18, rpio.LOW)
+		res.json(true)
+	}, 2000)
+})
+#
 router.post('/lights', function (req, res) {
 	const light = (req.body.light) ? '0' : '1'
 
