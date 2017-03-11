@@ -51,7 +51,7 @@ router.get('/right', function (req, res) {
 	setTimeout(function () {
 		rpio.write(18, rpio.LOW)
 		res.json(true)
-	}, 3#000)
+	}, 3000)
 })
 
 router.post('/lights', function (req, res) {
