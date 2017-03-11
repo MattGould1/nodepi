@@ -7,11 +7,11 @@ import BodyParser from 'body-parser'
 import rpio from 'rpio'
 
 var pin = 12;           /* P12/GPIO18 */
-var range = 8;       /* LEDs can quickly hit max brightness, so only use */
-var max = 8;          /*   the bottom 8th of a larger scale */
-var clockdiv = 32;       /* Clock divider (PWM refresh rate), 8 == 2.4MHz */
-var interval = 50;       /* setInterval timer, speed of pulses */
-var times = 1;          /* How many times to pulse before exiting */
+var range = 1024;       /* LEDs can quickly hit max brightness, so only use */
+var max = 128;          /*   the bottom 8th of a larger scale */
+var clockdiv = 512;       /* Clock divider (PWM refresh rate), 8 == 2.4MHz */
+var interval = 1000;       /* setInterval timer, speed of pulses */
+var times = 2;          /* How many times to pulse before exiting */
 
 /*
  * Enable PWM on the chosen pin and set the clock and range.
