@@ -62,7 +62,7 @@ router.post('/lights', function (req, res) {
 	res.json(true)
 })
 
-router.post('/colourChange', function (req, res) {#
+router.post('/colourChange', function (req, res) {
 	const colour = req.body.colour
 	console.log(colour);
 	// serialport.write(new Buffer(colour))
