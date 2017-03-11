@@ -42,7 +42,7 @@ router.get('/left', function (req, res) {
 	setTimeout(function () {
 		rpio.write(12, rpio.LOW)
 		res.json(true)
-	}, 3000)
+	}, 250)
 })
 
 router.get('/right', function (req, res) {
@@ -51,7 +51,7 @@ router.get('/right', function (req, res) {
 	setTimeout(function () {
 		rpio.write(18, rpio.LOW)
 		res.json(true)
-	}, 3000)
+	}, 250)
 })
 
 router.post('/lights', function (req, res) {
@@ -62,7 +62,7 @@ router.post('/lights', function (req, res) {
 	res.json(true)
 })
 
-router.post('/colourChange', function (req, res) {
+router.post('/colourChange', function (req, res) {#
 	const colour = req.body.colour
 	console.log(colour);
 	// serialport.write(new Buffer(colour))
