@@ -7,6 +7,11 @@ import http from 'http'
 
 import rpio from 'rpio'
 
+
+// open gpio pins
+rpio.open(12, rpio.OUTPUT, rpio.LOW)
+rpio.open(18, rpio.OUTPUT, rpio.LOW)
+
 // sockets
 import socketio from 'socket.io'
 
@@ -36,13 +41,13 @@ var sio = socketio(server)
 // 	handshae: true
 // }))
 sio.on('connection', function (socket) {
-	//join my own room, this will enable people to send messages to me through my own room
+	/*
+		data:
+			direction (left, right, up, down)
+			speed (1, 0)
+	 */
 	socket.on('drive', function (data) {
-
-
 		const speed = (data['speed']) ? rpio.HIGH : rpio.LOW;
-		console.log(speed)
-		console.log(data['direction'])
 		switch(data[0]) {
 			case "right": {
 				rpio.write(18, speed)
