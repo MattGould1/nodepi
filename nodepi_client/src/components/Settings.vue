@@ -5,6 +5,8 @@
       <md-radio v-model="colour" id="green" name="green" md-value="green" class="md-warn" @change="colour1('g')">Green</md-radio>
       <md-radio v-model="colour" id="blue" name="blue" md-value="blue" class="md-warn" @change="colour1('b')">Blue</md-radio>
     </div>
+    <div v-on:mousedown="drive('left', 1)" v-on:mouseup="drive('left', 0)">drive left</div>
+    <div v-on:mousedown="drive('right', 1)" v-on:mouseup="drive('right', 0)">drive right</div>
 <!-- 
     <md-switch md-theme="green" v-model="colour" @change="color" id="colour" name="my-test5" class="md-primary">Green Primary Color</md-switch> -->
     <md-switch v-model="lighton" @change="light" id="lighton" name="lighton" class="md-primary">Switch Light on/off</md-switch>
@@ -23,7 +25,22 @@ export default {
       colour: 'r'
     }
   },
+  sockets: {
+    helloworld: function (data) {
+      console.log(data)
+    }
+  },
+  created () {
+    this.$socket.emit('drive', 'left')
+  },
   methods: {
+    drive (direction, speed) {
+      const data = {
+        'direction': direction,
+        'speed': speed
+      }
+      this.$socket.emit('drive', data)
+    },
     light () {
       return lights
         .save({ light: this.lighton })

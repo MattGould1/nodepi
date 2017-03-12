@@ -136,6 +136,7 @@
     "body-parser": "^1.17.1",
     "rpio": "^0.9.16",
     "serialport": "^4.0.7",
+    "socket.io": "^1.7.3",
     "wiring-pi": "^2.2.1"
   }
 }

@@ -4,16 +4,15 @@ import Vue from 'vue'
 import router from './router'
 import VueResource from 'vue-resource'
 import Vuex from 'vuex'
-import VueSocketio from 'vue-socket.io';
+import VueSocketio from 'vue-socket.io'
 
 // components
 import VueMaterial from 'vue-material'
 
-//options
-Vue.http.options.root = 'http://192.168.1.19:3000/'
+// options
+Vue.http.options.root = 'http://localhost:3000/'
 
 Vue.use(VueMaterial)
-
 Vue.use(Vuex)
 Vue.use(VueSocketio, Vue.http.options.root)
 Vue.use(VueResource)
