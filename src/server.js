@@ -38,7 +38,11 @@ var sio = socketio(server)
 sio.on('connection', function (socket) {
 	//join my own room, this will enable people to send messages to me through my own room
 	socket.on('drive', function (data) {
+
+
 		const speed = (data[1]) ? rpio.HIGH : rpio.LOW;
+		console.log(speed)
+		console.log(data[0])
 		switch(data[0]) {
 			case "right": {
 				rpio.write(18, speed)
