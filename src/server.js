@@ -40,9 +40,9 @@ sio.on('connection', function (socket) {
 	socket.on('drive', function (data) {
 
 
-		const speed = (data[1]) ? rpio.HIGH : rpio.LOW;
+		const speed = (data['speed']) ? rpio.HIGH : rpio.LOW;
 		console.log(speed)
-		console.log(data[0])
+		console.log(data['direction'])
 		switch(data[0]) {
 			case "right": {
 				rpio.write(18, speed)
