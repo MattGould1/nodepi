@@ -52,10 +52,12 @@ sio.on('connection', function (socket) {
 		const speed = (data['speed']) ? rpio.HIGH : rpio.LOW;
 		switch(data[0]) {
 			case "right": {
+				console.log('right1')
 				rpio.write(18, speed)
 				break
 			}
 			case "left": {
+				console.log('left1')
 				rpio.write(12, speed)
 				break
 			}
