@@ -5,6 +5,8 @@ import http from 'http'
 // routes
 // import index from './routes/index'
 
+import rpio from 'rpio'
+
 // sockets
 import socketio from 'socket.io'
 
