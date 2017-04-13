@@ -2,11 +2,12 @@
 import express from 'express'
 import BodyParser from 'body-parser'
 import http from 'http'
+import _ from 'underscore'
+
 // routes
 // import index from './routes/index'
 
 import rpio from 'rpio'
-
 
 // open gpio pins
 rpio.open(12, rpio.OUTPUT, rpio.LOW)
@@ -43,13 +44,18 @@ var sio = socketio(server)
 sio.on('connection', function (socket) {
 	/*
 		data:
-			direction (left, right, up, down)
+			direction (up, down)
 			speed (1, 0)
 	 */
 	socket.on('drive', function (data) {
-		console.log(data)
-
 		const speed = (data['speed']) ? rpio.HIGH : rpio.LOW;
+
+		if (speed === 0) {
+			forEach(pins as pin) {
+
+			}
+		}
+
 		switch(data['direction']) {
 			case "right": {
 				console.log('right1')
