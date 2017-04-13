@@ -9,6 +9,17 @@ import _ from 'underscore'
 
 import rpio from 'rpio'
 
+const pins = {
+	'drive': {
+		'forward': 12,
+		'backward': 18
+	},
+	'steer': {
+		'left': 11,
+		'right': 13
+	}
+}
+
 // open gpio pins
 rpio.open(12, rpio.OUTPUT, rpio.LOW)
 rpio.open(18, rpio.OUTPUT, rpio.LOW)
@@ -48,27 +59,18 @@ sio.on('connection', function (socket) {
 			speed (1, 0)
 	 */
 	socket.on('drive', function (data) {
-		const speed = (data['speed']) ? rpio.HIGH : rpio.LOW;
+		const speed = (data['speed']) ? rpio.HIGH : rpio.LOW
+		const pin = pins.drive[data['direction']]
 
-		if (speed === 0) {
-			forEach(pins as pin) {
+		rpio.write(pin, speed)
+	})
 
-			}
-		}
+	socket.on('steer', function (data) {
+		const speed = (data['speed']) ? rpio.HIGH : rpio.LOW
+		const pin = pins.drive[data['direction']]
 
-		switch(data['direction']) {
-			case "right": {
-				console.log('right1')
-				rpio.write(18, speed)
-				break
-			}
-			case "left": {
-				console.log('left1')
-				rpio.write(12, speed)
-				break
-			}
-		}
-	});
+		rpio.write(pin, speed)
+	})
 
 	setInterval(function () {
 		socket.emit('helloworld', 'hello world')
