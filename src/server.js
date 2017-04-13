@@ -12,7 +12,9 @@ import rpio from 'rpio'
 const pins = {
 	'drive': {
 		'forward': 12,
-		'backward': 18
+		'backward': 18,
+		'left': 11,
+		'right': 13
 	},
 	'steer': {
 		'left': 11,
@@ -59,13 +61,6 @@ sio.on('connection', function (socket) {
 			speed (1, 0)
 	 */
 	socket.on('drive', function (data) {
-		const speed = (data['speed']) ? rpio.HIGH : rpio.LOW
-		const pin = pins.drive[data['direction']]
-
-		rpio.write(pin, speed)
-	})
-
-	socket.on('steer', function (data) {
 		const speed = (data['speed']) ? rpio.HIGH : rpio.LOW
 		const pin = pins.drive[data['direction']]
 
