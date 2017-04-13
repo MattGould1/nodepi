@@ -5,7 +5,15 @@
       <md-radio v-model="colour" id="green" name="green" md-value="green" class="md-warn" @change="colour1('g')">Green</md-radio>
       <md-radio v-model="colour" id="blue" name="blue" md-value="blue" class="md-warn" @change="colour1('b')">Blue</md-radio>
     </div>
-    <div v-on:touchstart="drive('forward', 1)" v-on:touchend="drive('forward', 0)" v-on:mousedown="drive('forward', 1)" v-on:mouseup="drive('forward', 0)">drive forward</div>
+
+    <div v-for="direction in directions"
+      v-on:touchstart="drive(direction, 1)"
+      v-on:touchend="drive(direction, 0)"
+      v-on:mousedown="drive(direction, 1)"
+      v-on:mouseup="drive(direction, 0)">
+      {{ direction }}
+    </div>
+
     <div v-on:touchstart="drive('backward', 1)" v-on:touchend="drive('backward', 0)" v-on:mousedown="drive('backward', 1)" v-on:mouseup="drive('backward', 0)">drive backward</div>
 <!-- 
     <md-switch md-theme="green" v-model="colour" @change="color" id="colour" name="my-test5" class="md-primary">Green Primary Color</md-switch> -->
@@ -22,7 +30,13 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
       lighton: true,
-      colour: 'r'
+      colour: 'r',
+      directions: [
+        'forward',
+        'backward',
+        'left',
+        'right'
+      ]
     }
   },
   sockets: {
@@ -39,6 +53,7 @@ export default {
         'direction': direction,
         'speed': speed
       }
+      console.log(data)
       this.$socket.emit('drive', data)
     },
     light () {
