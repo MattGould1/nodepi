@@ -10,7 +10,7 @@ import VueSocketio from 'vue-socket.io'
 import VueMaterial from 'vue-material'
 
 // options
-Vue.http.options.root = 'http://localhost:3000/'
+Vue.http.options.root = 'http://192.168.1.19:3000/'
 
 Vue.use(VueMaterial)
 Vue.use(Vuex)

@@ -11,10 +11,10 @@ import rpio from 'rpio'
 
 const pins = {
 	'drive': {
-		'forward': 12,
-		'backward': 18,
-		'left': 11,
-		'right': 13
+		'forward': 11,
+		'backward': 13,
+		'left': 12,
+		'right': 18
 	},
 	'steer': {
 		'left': 11,
