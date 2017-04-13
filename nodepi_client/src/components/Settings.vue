@@ -5,8 +5,8 @@
       <md-radio v-model="colour" id="green" name="green" md-value="green" class="md-warn" @change="colour1('g')">Green</md-radio>
       <md-radio v-model="colour" id="blue" name="blue" md-value="blue" class="md-warn" @change="colour1('b')">Blue</md-radio>
     </div>
-    <div v-on:mousedown="drive('left', 1)" v-on:mouseup="drive('left', 0)">drive left</div>
-    <div v-on:mousedown="drive('right', 1)" v-on:mouseup="drive('right', 0)">drive right</div>
+    <div v-on:touchstart="drive('forward', 1)" v-on:touchend="drive('forward', 0)" v-on:mousedown="drive('forward', 1)" v-on:mouseup="drive('forward', 0)">drive forward</div>
+    <div v-on:touchstart="drive('backward', 1)" v-on:touchend="drive('backward', 0)" v-on:mousedown="drive('backward', 1)" v-on:mouseup="drive('backward', 0)">drive backward</div>
 <!-- 
     <md-switch md-theme="green" v-model="colour" @change="color" id="colour" name="my-test5" class="md-primary">Green Primary Color</md-switch> -->
     <md-switch v-model="lighton" @change="light" id="lighton" name="lighton" class="md-primary">Switch Light on/off</md-switch>
