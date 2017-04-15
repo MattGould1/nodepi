@@ -61,6 +61,7 @@ sio.on('connection', function (socket) {
 			speed (1, 0)
 	 */
 	socket.on('drive', function (data) {
+		console.log(data);
 		const speed = (data['speed']) ? rpio.HIGH : rpio.LOW
 		const pin = pins.drive[data['direction']]
 
