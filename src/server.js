@@ -15,10 +15,6 @@ const pins = {
 		'backward': 13,
 		'left': 12,
 		'right': 18
-	},
-	'steer': {
-		'left': 11,
-		'right': 13
 	}
 }
 
