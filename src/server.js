@@ -57,11 +57,13 @@ var sio = socketio(server)
 sio.on('connection', function (socket) {
 	/*
 		data:
-			direction (up, down)
+			direction (up, down, left, right)
 			speed (1, 0)
 	 */
 	socket.on('drive', function (data) {
-		console.log(data);
+		if (!process.env.production) {
+			console.log(data)
+		}
 		const speed = (data['speed']) ? rpio.HIGH : rpio.LOW
 		const pin = pins.drive[data['direction']]
 

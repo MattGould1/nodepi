@@ -47,6 +47,7 @@ export default {
   },
   methods: {
     drive (direction, speed) {
+      console.log(direction)
       const data = {
         'direction': direction,
         'speed': speed
