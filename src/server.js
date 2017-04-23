@@ -18,9 +18,14 @@ const pins = {
 	}
 }
 
-// open gpio pins
+// set gpio pins as output
+// left/right
 rpio.open(12, rpio.OUTPUT, rpio.LOW)
 rpio.open(18, rpio.OUTPUT, rpio.LOW)
+
+// forward/backward
+rpio.open(11, rpio.OUTPUT, rpio.LOW)
+rpio.open(13, rpio.OUTPUT, rpio.LOW)
 
 // sockets
 import socketio from 'socket.io'
@@ -62,6 +67,9 @@ sio.on('connection', function (socket) {
 		}
 		const speed = (data['speed']) ? rpio.HIGH : rpio.LOW
 		const pin = pins.drive[data['direction']]
+
+		console.log(pin);
+		console.log(speed);
 
 		rpio.write(pin, speed)
 	})
