@@ -13,8 +13,8 @@ const pins = {
 	'drive': {
 		'forward': 40,
 		'backward': 38,
-		'left': 13,
-		'right': 15
+		'left': 15,
+		'right': 13
 	}
 }
 
