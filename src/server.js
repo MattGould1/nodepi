@@ -32,8 +32,9 @@ rpio.open(11, rpio.OUTPUT, rpio.HIGH)
 rpio.open(13, rpio.OUTPUT, rpio.LOW)
 rpio.open(15, rpio.OUTPUT, rpio.LOW)
 
-setInterval(function () {
 	var $swap = 0;
+
+setInterval(function () {
 
 	if ($swap == 0) {
 		rpio.write(13, rpio.HIGH)
