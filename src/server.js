@@ -40,7 +40,7 @@ setInterval(function () {
 		rpio.write(15, rpio.LOW)
 		$swap = 1
 
-		console.log('spinning 1')#
+		console.log('spinning 1')
 	} else {
 		rpio.write(13, rpio.LOW)
 		rpio.write(15, rpio.HIGH)
