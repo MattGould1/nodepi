@@ -11,45 +11,28 @@ import rpio from 'rpio'
 
 const pins = {
 	'drive': {
-		'forward': 11,
-		'backward': 13,
-		'left': 12,
-		'right': 18
+		'forward': 40,
+		'backward': 38,
+		'left': 13,
+		'right': 15
 	}
 }
 
-// set gpio pins as output
-// left/right
-rpio.open(12, rpio.OUTPUT, rpio.LOW)
-rpio.open(18, rpio.OUTPUT, rpio.LOW)
-
-// forward/backward
-rpio.open(11, rpio.OUTPUT, rpio.LOW)
-rpio.open(13, rpio.OUTPUT, rpio.LOW)
-
+// steer left/right
 rpio.open(7, rpio.OUTPUT, rpio.HIGH)
 rpio.open(11, rpio.OUTPUT, rpio.HIGH)
+
+// input pins
 rpio.open(13, rpio.OUTPUT, rpio.LOW)
 rpio.open(15, rpio.OUTPUT, rpio.LOW)
 
-	var $swap = 0;
+// move forward/backward
+rpio.open(37, rpio.OUTPUT, rpio.HIGH)
+rpio.open(35, rpio.OUTPUT, rpio.HIGH)
 
-setInterval(function () {
-
-	if ($swap == 0) {
-		rpio.write(13, rpio.HIGH)
-		rpio.write(15, rpio.LOW)
-		$swap = 1
-
-		console.log('spinning 1')
-	} else {
-		rpio.write(13, rpio.LOW)
-		rpio.write(15, rpio.HIGH)
-		$swap = 0
-		console.log('spinning 2')
-	}
-
-}, 2000)
+// input pins
+rpio.open(38, rpio.OUTPUT, rpio.LOW)
+rpio.open(40, rpio.OUTPUT, rpio.LOW)
 
 
 // sockets
