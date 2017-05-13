@@ -35,7 +35,7 @@ rpio.open(15, rpio.OUTPUT, rpio.LOW)
 setInterval(function () {
 	var $swap = 0;
 
-	if (swap == 0) {
+	if ($swap == 0) {
 		rpio.write(13, rpio.HIGH)
 		rpio.write(15, rpio.LOW)
 		$swap++
