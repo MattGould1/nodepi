@@ -38,11 +38,14 @@ setInterval(function () {
 	if ($swap == 0) {
 		rpio.write(13, rpio.HIGH)
 		rpio.write(15, rpio.LOW)
-		$swap++
+		$swap = 1
+
+		console.log('spinning 1')#
 	} else {
 		rpio.write(13, rpio.LOW)
 		rpio.write(15, rpio.HIGH)
 		$swap = 0
+		console.log('spinning 2')
 	}
 
 }, 2000)
