@@ -27,6 +27,27 @@ rpio.open(18, rpio.OUTPUT, rpio.LOW)
 rpio.open(11, rpio.OUTPUT, rpio.LOW)
 rpio.open(13, rpio.OUTPUT, rpio.LOW)
 
+rpio.open(7, rpio.OUTPUT, rpio.HIGH)
+rpio.open(11, rpio.OUTPUT, rpio.HIGH)
+rpio.open(13, rpio.OUTPUT, rpio.LOW)
+rpio.open(15, rpio.OUTPUT, rpio.LOW)
+
+setInterval(function () {
+	$swap = 0;
+
+	if (swap == 0) {
+		rpio.write(13, rpio.HIGH)
+		rpio.write(15, rpio.LOW)
+		$swap++
+	} else {
+		rpio.write(13, rpio.LOW)
+		rpio.write(15, rpio.HIGH)
+		$swap = 0
+	}
+
+}, 2000)
+
+
 // sockets
 import socketio from 'socket.io'
 
