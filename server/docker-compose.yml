@@ -1,0 +1,29 @@
+version: '2'
+
+networks:
+    aipi:
+        driver: bridge
+services:
+  app:
+    image: tianon/true
+    volumes:
+      - ./src:/usr/src/app
+      - ./tmp/logs:/root/.npm/_logs
+    container_name: aipi-app
+    networks:
+      - aipi
+  server:
+    build: ./dockers/server
+    environment:
+      - NODE_ENV=production
+    working_dir: /usr/src/app
+    volumes_from:
+      - app
+    ports:
+      - 3000:3000
+    networks:
+      - aipi
+
+volumes:
+  tensorflow:
+      driver: "local"
